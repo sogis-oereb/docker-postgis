@@ -54,13 +54,15 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
       if: ${{ (github.ref == 'refs/heads/main') && (github.event_name != 'pull_request') && !env.ACT }}
 
-    # - name: Multi-platform build and push
-    #   uses: docker/build-push-action@a66e35b9cbcf4ad0ea91ffcaf7bbad63ad9e0229  # v2.7.0 (2021-10-22)
-    #   with:
-    #     platforms: linux/amd64,linux/arm64
-    #     context: github.com/postgis/docker-postgis#master
-    #     file: ${{ env.VERSION }}/Dockerfile
-    #     tags: ${{ steps.meta.outputs.tags }}
-    #     labels: ${{ steps.meta.outputs.labels }}
-    #     pull: true
-    #     push: ${{ (github.ref == 'refs/heads/multiarch') && (github.event_name != 'pull_request') && !env.ACT }}
+    - name: Multi-platform build and push
+      uses: docker/build-push-action@a66e35b9cbcf4ad0ea91ffcaf7bbad63ad9e0229  # v2.7.0 (2021-10-22)
+      with:
+        platforms: linux/amd64,linux/arm64
+        context: github.com/postgis/docker-postgis#master
+        file: ${{ env.VERSION }}/Dockerfile
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        pull: false
+    #     push: ${{ (github.ref == 'refs/heads/main') && (github.event_name != 'pull_request') && !env.ACT }}
+    - name: Show images
+      run: docker images
