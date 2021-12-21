@@ -60,8 +60,8 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           #context: github.com/postgis/docker-postgis#master
-          context: .
-          file: ${{ env.VERSION }}/Dockerfile
+          context: ${{ env.VERSION }}
+          file: Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           pull: true
