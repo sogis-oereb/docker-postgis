@@ -24,3 +24,4 @@ RUN mkdir -p /docker-entrypoint-initdb.d
 COPY ./initdb-postgis.sh /docker-entrypoint-initdb.d/10_postgis.sh
 COPY ./update-postgis.sh /usr/local/bin
 
+HEALTHCHECK --interval=30s --timeout=5s --start-period=60s CMD pg_isready -h localhost -p 5432
