@@ -12,4 +12,6 @@ Da die offiziellen PostGIS-Images noch keine ARM-Prozessoren unterstützen, müs
 - https://registry.hub.docker.com/r/postgis/postgis/
 - https://registry.hub.docker.com/_/postgres
 
-Damit ein möglichst gleiches Verhalten wie beim Original-GRETL-Jobs-Image erreicht wird, kann die Konfiguration im _gretljobs_-Ordner als Ausgangslage verwendet werden.
+Damit ein möglichst gleiches Verhalten wie beim Original-GRETL-Jobs-Image erreicht wird, kann die Konfiguration im _gretljobs_-Ordner als Ausgangslage verwendet werden. 
+
+**Import von GDI-Dumps wurde noch nicht getestet.**
