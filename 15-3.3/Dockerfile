@@ -1,13 +1,21 @@
-FROM postgres:14-bullseye
+#
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "make update"! PLEASE DO NOT EDIT IT DIRECTLY.
+#
+
+FROM postgres:15-bullseye
 
 LABEL maintainer="PostGIS Project - https://postgis.net"
 
 ENV POSTGIS_MAJOR 3
-ENV POSTGIS_VERSION 3.1.4+dfsg-3.pgdg110+1
+ENV POSTGIS_VERSION 3.3.2+dfsg-1.pgdg110+1
 
 RUN apt-get update \
       && apt-cache showpkg postgresql-$PG_MAJOR-postgis-$POSTGIS_MAJOR \
       && apt-get install -y --no-install-recommends \
+           # ca-certificates: for accessing remote raster files;
+           #   fix: https://github.com/postgis/docker-postgis/issues/307
+           ca-certificates \
+           \
            postgresql-$PG_MAJOR-postgis-$POSTGIS_MAJOR=$POSTGIS_VERSION \
            postgresql-$PG_MAJOR-postgis-$POSTGIS_MAJOR-scripts \
       && rm -rf /var/lib/apt/lists/*
