@@ -5,9 +5,8 @@ services:
     environment:
       POSTGRES_DB: edit
       POSTGRES_HOST_AUTH_METHOD: md5
-      #PG_LOCALE: de_CH.UTF-8
-      # siehe https://www.thomas-krenn.com/de/wiki/Locales_unter_Ubuntu_konfigurieren falls notwendig
       PGPORT: 5432
+      PGUSER: postgres
       PG_USER: ddluser
       PG_PASSWORD: ddluser
       POSTGRES_PASSWORD: secret
@@ -16,11 +15,7 @@ services:
       - "54321:5432"
     volumes:
       - ./initdb-user.sh:/docker-entrypoint-initdb.d/20_initdb-user.sh
-#       - pgdata_edit:/pgdata
-# volumes:
-#   pgdata_edit:
-#   pgconf_pub:
+      - pgdata_edit:/pgdata
+volumes:
+  pgdata_edit:
 #   pgdata_pub:
-#   pgwal_pub:
-#   recover_pub:
-#   backrestrepo_pub:

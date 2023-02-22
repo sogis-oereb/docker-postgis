@@ -14,4 +14,5 @@ Da die offiziellen PostGIS-Images noch keine ARM-Prozessoren unterstützen, müs
 
 Damit ein möglichst gleiches Verhalten wie beim Original-GRETL-Jobs-Image erreicht wird, kann die Konfiguration im _gretljobs_-Ordner als Ausgangslage verwendet werden. 
 
-**Import von GDI-Dumps wurde noch nicht getestet.**
+- **Import von GDI-Dumps wurde noch nicht getestet.**
+- **locale de_CH: locale wird zwar installiert aber nicht verwendet, sonst sind bei mir die log messages auf deutsch (`ENV LANG de_DE.utf8`).**

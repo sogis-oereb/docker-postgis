@@ -24,4 +24,6 @@ RUN mkdir -p /docker-entrypoint-initdb.d
 COPY ./initdb-postgis.sh /docker-entrypoint-initdb.d/10_postgis.sh
 COPY ./update-postgis.sh /usr/local/bin
 
+RUN localedef -i de_CH -c -f UTF-8 -A /usr/share/locale/locale.alias de_CH.UTF-8
+
 HEALTHCHECK --interval=30s --timeout=5s --start-period=60s CMD pg_isready -h localhost -p 5432
