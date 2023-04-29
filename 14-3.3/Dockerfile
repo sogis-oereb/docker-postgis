@@ -26,4 +26,4 @@ COPY ./update-postgis.sh /usr/local/bin
 
 RUN localedef -i de_CH -c -f UTF-8 -A /usr/share/locale/locale.alias de_CH.UTF-8
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=60s CMD pg_isready -h localhost -p 5432
+HEALTHCHECK --interval=5s --timeout=5s --retries=10 --start-period=60s CMD pg_isready -h localhost -p 5432
